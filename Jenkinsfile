@@ -16,7 +16,7 @@ pipeline {
 		expresssion {
 			$BRANCH_NAME == "main"
 		}
-1	    }
+	    }
             steps {
                 sh 'echo "this is test stage"'
             }
