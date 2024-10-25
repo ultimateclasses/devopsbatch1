@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Test') {
 	    when{
-		expresssion {
+		expression {
 			$BRANCH_NAME == "main"
 		}
 	    }
