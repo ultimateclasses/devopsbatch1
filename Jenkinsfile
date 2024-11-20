@@ -8,7 +8,6 @@ pipeline{
             }
         }
     }
-    stages{
         stage("docker stage"){
             steps{
                 script {
@@ -17,8 +16,6 @@ pipeline{
                 }
             }
         }
-    }
-    stages{
         stage("dockerhub image push"){
             steps{
                 script {
@@ -29,6 +26,6 @@ pipeline{
             }
         }
     }
-}
+
 }
 
