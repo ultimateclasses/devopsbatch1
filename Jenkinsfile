@@ -1,36 +1,11 @@
-pipeline {
+pipeline{
     agent any
-    environment{
-	testvariable = "custom_variable_defined"
-    }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'echo "this is build stage"'
-		//sh "echo jenkins home path -> ${BRANCH}"
-		echo "this is custom env variables -> ${testvariable}"
+    stages{
+        stage("build stage"){
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '1c2df7c6-2a93-4470-a322-b94cd1ede707', url: 'https://github.com/ultimateclasses/devopsbatch1.git']])
+                sh "maven clean install"
             }
         }
-        stage('Test') {
-	    when{
-		expression {
-			branch 'main'
-		}
-	    }
-            steps {
-                sh 'echo "this is test stage"'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'echo "this is Deploy stage"'
-            }
-        }
-    }
-    post{
-	always{
-		sh 'echo "this is POST BLOCK for testing"'
-	}
-      
     }
 }
