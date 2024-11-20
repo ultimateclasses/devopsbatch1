@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools{
-	maven "maven_auto_home"
+	maven "maven_3_9_9"
     }
     stages{
         stage("build stage"){
