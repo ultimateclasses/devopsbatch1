@@ -10,8 +10,9 @@ pipeline{
         stage("docker stage"){
             steps{
                 script {
-                    sh "docker build -t suresh-image-local ."
-                    sh "docker tag suresh-image-local ultimateclasses2022/devopsbatch1:localversion3"
+		    sh ""
+                    sh "sudo docker build -t suresh-image-local ."
+                    sh "sudo docker tag suresh-image-local ultimateclasses2022/devopsbatch1:localversion3"
                 }
             }
         }
@@ -19,8 +20,8 @@ pipeline{
             steps{
                 script {
                     withCredentials([usernamePassword(credentialsId: '1c2df7c6-2a93-4470-a322-b94cd1ede707', passwordVariable: 'dockerhubpass', usernameVariable: 'ultimateclasses2022')]) {
-                    sh "docker login -u $usernameVariable -p $dockerhubpass"
-                    sh "docker push ultimateclasses2022/devopsbatch1:localversion3"
+                    sh "sudo ocker login -u $usernameVariable -p $dockerhubpass"
+                    sh "sudo docker push ultimateclasses2022/devopsbatch1:localversion3"
                 }
             }
         }
